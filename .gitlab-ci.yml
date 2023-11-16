@@ -6,9 +6,9 @@ stages:
 
 variables:
   DOCKER_IMAGE_NAME: "kira-kira-photo-box"
-#  ACCESS_TOKEN: "glpat--3sTiy7bhyfsgxsX_sHx"
-#  USERNAME: "ayokerja76"
-#
+  ACCESS_TOKEN: "glpat--3sTiy7bhyfsgxsX_sHx"
+  USERNAME: "ayokerja76"
+
 #services:
 #  - docker:dind
 

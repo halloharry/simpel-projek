@@ -8,7 +8,6 @@
         <artifactId>sistem-product</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
     <artifactId>master-data</artifactId>
 
     <properties>
