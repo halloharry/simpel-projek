@@ -15,7 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -52,6 +54,10 @@ public class UserImpl implements UserService {
         boolean passwordTrue = Pattern.matches(passRgx, userRequestDto.getPassword());
         String bcryptHashString = BCrypt.withDefaults().hashToString(12, userRequestDto.getPassword().toCharArray());
         if (emailTrue && passwordTrue) {
+            List<User> existUser = userRepository.findAllByEmail(userRequestDto.getEmail()).stream().filter(x -> !x.getIsDeleted()).collect(Collectors.toList());
+            if (!existUser.isEmpty()) {
+                throw new UserCustomExeption("user sudah ada");
+            }
             User user = new User();
             user.setName(userRequestDto.getName());
             user.setEmail(userRequestDto.getEmail());

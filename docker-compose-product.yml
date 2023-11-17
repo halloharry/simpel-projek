@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  app:
+    container_name: springboot-postgres
+    image: springboot-postgres
+    build:
+      context: .
+      dockerfile: Dockerfile.Product
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresqldb
+  postgresqldb:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=java_on_twitter
+      - POSTGRES_PASSWORD=postgres
+

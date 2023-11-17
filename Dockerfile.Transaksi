@@ -1,0 +1,17 @@
+# Use an official OpenJDK runtime as a parent image
+FROM maven:3.8.4-openjdk-17-slim AS build
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the transaction module contents into the container at /app
+COPY . /app
+
+# Build the transaction module with Maven
+RUN mvn clean install
+
+# Make port 8080 available to the world outside this container
+EXPOSE 8080
+
+# Run the transaction module when the container launches
+CMD ["java", "-jar", "/app/transaksi/target/transaksi-0.0.1-SNAPSHOT.jar"]
