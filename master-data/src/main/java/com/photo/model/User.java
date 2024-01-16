@@ -25,4 +25,11 @@ public class User extends ModelBase {
     @NotNull
     @Column(name = "password")
     private String password;
+
+    @Column(name = "balance")
+    private Integer balance;
+
+    @Column(name = "account_number")
+    private String accountNumber;
+
 }
